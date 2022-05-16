@@ -1,4 +1,6 @@
 import React from 'react';
+import AboutSurah from '@components/molecules/AboutSurah';
+import AyahSurah from '@components/molecules/AyahSurah';
 
 const DetailSurah = () => {
   return (

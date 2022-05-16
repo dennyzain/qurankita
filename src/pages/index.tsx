@@ -1,14 +1,15 @@
 import { GetStaticProps, NextPage } from 'next';
-import AboutSurah from '../components/molecules/AboutSurah';
-import AyahSurah from '../components/molecules/AyahSurah';
-import Footer from '../components/organisms/Footer';
-import Header from '../components/organisms/Header';
+import DetailSurah from '@components/organisms/DetailSurah';
+import AboutSurah from '@components/molecules/AboutSurah';
+import AyahSurah from '@components/molecules/AyahSurah';
+import Footer from '@components/organisms/Footer';
+import Header from '@components/organisms/Header';
 
 const Home: NextPage = ({ data }) => {
   return (
     <>
       <Header />
-
+      <DetailSurah />
       <Footer />
     </>
   );
