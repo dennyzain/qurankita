@@ -60,7 +60,6 @@ interface DetailSurahProps {
 }
 
 const DetailSurah: React.FC<{ data: DetailSurahProps }> = ({ data }) => {
-  console.log(data);
   return (
     <div className="p-5">
       <AboutSurah title={data.name.transliteration.id} tafsir={data.tafsir.id} />

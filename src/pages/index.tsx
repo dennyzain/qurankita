@@ -1,13 +1,13 @@
 import { GetStaticProps, NextPage } from 'next';
-import DetailSurah from '@components/organisms/DetailSurah';
 import Footer from '@components/organisms/Footer';
 import Header from '@components/organisms/Header';
+import ListSurah from '@/components/organisms/ListSurah';
 
 const Home: NextPage = ({ data }) => {
   return (
     <>
       <Header />
-      <DetailSurah data={data} />
+      <ListSurah />
       <Footer />
     </>
   );

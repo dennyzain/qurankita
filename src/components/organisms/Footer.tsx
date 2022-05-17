@@ -3,8 +3,8 @@ import React from 'react';
 const Footer: React.FC = () => {
   return (
     <footer>
-      <p className="p-5 font-inter font-extrabold text-sm text-center">
-        Made with &hearts; by Denny Abbas Zain
+      <p className="p-5 font-inter font-extrabold text-xs text-center lg:text-sm">
+        made with &hearts; by Denny Abbas Zain
       </p>
     </footer>
   );
