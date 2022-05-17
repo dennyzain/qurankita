@@ -1,15 +1,13 @@
 import { GetStaticProps, NextPage } from 'next';
-import Footer from '@components/organisms/Footer';
-import Header from '@components/organisms/Header';
-import ListSurah from '@/components/organisms/ListSurah';
+import Layout from '@components/layout';
+import ListSurah from '@components/organisms/ListSurah';
+import { DetailSurahProps } from '@components/organisms/DetailSurah';
 
-const Home: NextPage = ({ data }) => {
+const Home: NextPage<{ data: DetailSurahProps }> = ({ data }) => {
   return (
-    <>
-      <Header />
+    <Layout>
       <ListSurah />
-      <Footer />
-    </>
+    </Layout>
   );
 };
 

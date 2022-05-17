@@ -1,33 +1,32 @@
 import React from 'react';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
-import DetailSurah from '@components/organisms/DetailSurah';
-import Footer from '@components/organisms/Footer';
-import Header from '@components/organisms/Header';
+import Layout from '@/components/layout';
+import DetailSurah, { DetailSurahProps } from '@components/organisms/DetailSurah';
 
-const DetailSurahPage: NextPage = ({ data }) => {
+const DetailSurahPage: NextPage<{ data: DetailSurahProps }> = ({ data }) => {
   return (
-    <>
-      <Header />
+    <Layout>
       <DetailSurah data={data} />
-      <Footer />
-    </>
+    </Layout>
   );
 };
 
 export default DetailSurahPage;
 
-export const getStaticPaths: GetStaticPaths = async (context) => {
-  const res = await fetch('https://api.quran.sutanlab.id/surah/1');
+export const getStaticPaths: GetStaticPaths = async () => {
+  const res = await fetch('https://api.quran.sutanlab.id/surah');
   const data = await res.json();
-  console.log(context);
   return {
-    paths: [{ params: { id: '1' } }],
+    paths: data.data.map((item: DetailSurahProps) => {
+      return { params: { id: `${item.number}` } };
+    }),
     fallback: true,
   };
 };
 
-export const getStaticProps: GetStaticProps = async () => {
-  const res = await fetch('https://api.quran.sutanlab.id/surah/1');
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const idSurah = params ? params.id : null;
+  const res = await fetch(`https://api.quran.sutanlab.id/surah/${idSurah}`);
   const data = await res.json();
   return {
     props: { data: data.data },

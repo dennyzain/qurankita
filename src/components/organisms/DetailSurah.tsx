@@ -2,7 +2,7 @@ import React from 'react';
 import AboutSurah from '@components/molecules/AboutSurah';
 import AyahSurah from '@components/molecules/AyahSurah';
 
-interface DetailSurahProps {
+export interface DetailSurahProps {
   number: number;
   name: {
     short: string;
