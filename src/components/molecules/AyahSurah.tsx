@@ -14,10 +14,11 @@ const AyahSurah: React.FC<AyahSurahProps> = ({
     <div className="flex flex-col justify-center">
       <h4 className="font-semibold text-lg font-inter mt-4">
         ayat
+        {' '}
         {ayah}
       </h4>
       <div className="self-center my-2">
-        <audio controls src={audio} >
+        <audio controls src={audio}>
           Your browser does not support the
           <code>audio</code>
           {' '}

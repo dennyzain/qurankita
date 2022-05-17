@@ -13,7 +13,7 @@ const Header: React.FC = () => (
         <button type="button">
           <FontAwesomeIcon icon={faMoon} />
         </button>
-        <button type="button" className="pl-4">
+        <button type="button" className="pl-6">
           <FontAwesomeIcon icon={faBarsStaggered} />
         </button>
       </div>
