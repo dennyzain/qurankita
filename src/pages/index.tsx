@@ -3,13 +3,11 @@ import Layout from '@components/layout';
 import ListSurah from '@components/organisms/ListSurah';
 import { DetailSurahProps } from '@components/organisms/DetailSurah';
 
-const Home: NextPage<{ data: DetailSurahProps }> = ({ data }) => {
-  return (
-    <Layout>
-      <ListSurah />
-    </Layout>
-  );
-};
+const Home: NextPage<{ data: DetailSurahProps }> = ({ data }) => (
+  <Layout>
+    <ListSurah />
+  </Layout>
+);
 
 export default Home;
 

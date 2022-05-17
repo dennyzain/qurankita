@@ -1,15 +1,13 @@
 import React from 'react';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
-import Layout from '@/components/layout';
 import DetailSurah, { DetailSurahProps } from '@components/organisms/DetailSurah';
+import Layout from '@components/layout';
 
-const DetailSurahPage: NextPage<{ data: DetailSurahProps }> = ({ data }) => {
-  return (
-    <Layout>
-      <DetailSurah data={data} />
-    </Layout>
-  );
-};
+const DetailSurahPage: NextPage<{ data: DetailSurahProps }> = ({ data }) => (
+  <Layout>
+    <DetailSurah data={data} />
+  </Layout>
+);
 
 export default DetailSurahPage;
 
@@ -17,9 +15,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const res = await fetch('https://api.quran.sutanlab.id/surah');
   const data = await res.json();
   return {
-    paths: data.data.map((item: DetailSurahProps) => {
-      return { params: { id: `${item.number}` } };
-    }),
+    paths: data.data.map((item: DetailSurahProps) => ({ params: { id: `${item.number}` } })),
     fallback: true,
   };
 };

@@ -59,21 +59,19 @@ export interface DetailSurahProps {
   ];
 }
 
-const DetailSurah: React.FC<{ data: DetailSurahProps }> = ({ data }) => {
-  return (
-    <div className="p-5">
-      <AboutSurah title={data.name.transliteration.id} tafsir={data.tafsir.id} />
-      {data.verses.map((item) => (
-        <AyahSurah
-          key={item.number.inSurah}
-          arabText={item.text.arab}
-          audio={item.audio.primary}
-          ayah={item.number.inSurah}
-          translation={item.translation.id}
-        />
-      ))}
-    </div>
-  );
-};
+const DetailSurah: React.FC<{ data: DetailSurahProps }> = ({ data }) => (
+  <div className="p-5">
+    <AboutSurah title={data.name.transliteration.id} tafsir={data.tafsir.id} />
+    {data.verses.map((item) => (
+      <AyahSurah
+        key={item.number.inSurah}
+        arabText={item.text.arab}
+        audio={item.audio.primary}
+        ayah={item.number.inSurah}
+        translation={item.translation.id}
+      />
+    ))}
+  </div>
+);
 
 export default DetailSurah;
