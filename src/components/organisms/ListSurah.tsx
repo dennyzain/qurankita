@@ -1,6 +1,6 @@
 import React from 'react';
-import { DetailSurahProps } from '@components/organisms/DetailSurah';
 import Link from 'next/link';
+import { DetailSurahProps } from '@components/organisms/DetailSurah';
 
 const ListSurah: React.FC<{data:Array<DetailSurahProps>}> = ({ data }) => (
   <section>
@@ -8,9 +8,9 @@ const ListSurah: React.FC<{data:Array<DetailSurahProps>}> = ({ data }) => (
       <h3 className="font-bold font-inter text-lg">List Surat Qur’an</h3>
       <ul>
         {data.map((surah) => (
-          <Link href={`surah/${surah.number}`}>
+          <Link key={surah.number} href={`surah/${surah.number}`}>
             <li className="p-1 my-2 border border-black bg-blue-300 font-inter font-medium cursor-pointer">
-              {`${surah.number}.` }
+              {`${surah.number}.`}
               {' '}
               {surah.name.transliteration.id}
               {' '}

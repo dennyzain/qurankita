@@ -19,10 +19,7 @@ const AyahSurah: React.FC<AyahSurahProps> = ({
       </h4>
       <div className="self-center my-2">
         <audio controls src={audio}>
-          Your browser does not support the
-          <code>audio</code>
-          {' '}
-          element.
+          <track kind="captions" about={audio} />
         </audio>
       </div>
       <h3 className="font-bold font-scheherazade text-3xl text-right mb-6 mt-4 leading-[65px]">

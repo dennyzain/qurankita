@@ -1,4 +1,9 @@
-import { faBarsStaggered, faBookOpenReader, faMoon } from '@fortawesome/free-solid-svg-icons';
+import {
+  faBarsStaggered,
+  faBookOpenReader,
+  faMagnifyingGlass,
+  faMoon,
+} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 
@@ -11,6 +16,9 @@ const Header: React.FC = () => (
       </div>
       <div className="flex">
         <button type="button">
+          <FontAwesomeIcon icon={faMagnifyingGlass} />
+        </button>
+        <button type="button" className="pl-6">
           <FontAwesomeIcon icon={faMoon} />
         </button>
         <button type="button" className="pl-6">
