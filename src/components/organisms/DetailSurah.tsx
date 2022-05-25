@@ -60,7 +60,7 @@ export interface DetailSurahProps {
 }
 
 const DetailSurah: React.FC<{ data: DetailSurahProps }> = ({ data }) => (
-  <div className="p-5">
+  <div className="animate p-5 bg-primary text-secondary dark:bg-dark-primary dark:text-dark-secondary">
     <AboutSurah title={data.name.transliteration.id} tafsir={data.tafsir.id} />
     {data.verses.map((item) => (
       <AyahSurah

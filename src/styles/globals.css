@@ -3,7 +3,6 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
-  background-color: #f5f6f7;
-  color: #444444;
+.animate{
+  @apply transition-colors duration-500
 }

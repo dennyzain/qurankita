@@ -5,7 +5,7 @@ import { DetailSurahProps } from '@components/organisms/DetailSurah';
 const ListSurah: React.FC<{data:Array<DetailSurahProps>}> = ({ data }) => (
   <section>
     <div className="p-5">
-      <h3 className="font-bold font-inter text-lg">List Surat Qur’an</h3>
+      <h3 className="font-bold font-inter text-lg">Daftar Surat Qur’an</h3>
       <ul>
         {data.map((surah) => (
           <Link key={surah.number} href={`surah/${surah.number}`}>
