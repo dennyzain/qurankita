@@ -1,4 +1,3 @@
-import React from 'react';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import DetailSurah, { DetailSurahProps } from '@components/organisms/DetailSurah';
 import Layout from '@components/layout';

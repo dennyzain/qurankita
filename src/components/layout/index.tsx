@@ -2,18 +2,22 @@ import React from 'react';
 import Header from '@components/organisms/Header';
 import Footer from '@components/organisms/Footer';
 import SearchSurah from '@components/organisms/SearchSurah';
+import { useAppSelector } from '@/stores/hooks';
 
 interface LayoutProps {
   children: React.ReactNode;
 }
 
-const Layout: React.FC<LayoutProps> = ({ children }) => (
-  <>
-    <Header />
-    <SearchSurah />
-    {children}
-    <Footer />
-  </>
-);
+const Layout: React.FC<LayoutProps> = ({ children }) => {
+  const isSearch = useAppSelector((state) => state.global.isSearch);
+  return (
+    <>
+      <Header />
+      { isSearch && <SearchSurah />}
+      {children}
+      <Footer />
+    </>
+  );
+};
 
 export default Layout;

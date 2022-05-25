@@ -1,8 +1,11 @@
 import Link from 'next/link';
 import React, { useCallback, useState } from 'react';
 import { DetailSurahProps } from '@components/organisms/DetailSurah';
+import { useAppDispatch } from '@/stores/hooks';
+import { searchAction } from '@/stores/reducer';
 
 const SearchSurah: React.FC = () => {
+  const dispatch = useAppDispatch();
   const [input, setInput] = useState('');
   const [resultFilter, setResultFilter] = useState([]);
 
@@ -23,7 +26,7 @@ const SearchSurah: React.FC = () => {
   };
 
   const handleCloseSuggest = () => {
-    console.log('clg');
+    dispatch(searchAction(false));
   };
 
   return (
@@ -36,8 +39,8 @@ const SearchSurah: React.FC = () => {
       />
       <div className="absolute top-full z-50 flex flex-col left-0 right-0">
         {resultFilter && resultFilter.map((item:DetailSurahProps) => (
-          <Link href={`/surah/${item.number}`}>
-            <button key={item.number} type="button" className="border border-slate-800 p-2 hover:bg-blue-300" onClick={handleCloseSuggest}>
+          <Link key={item.number} href={`/surah/${item.number}`}>
+            <button type="button" className="border border-slate-800 p-2 hover:bg-blue-300" onClick={handleCloseSuggest}>
               <p>
                 {item.name.transliteration.id}
               </p>
