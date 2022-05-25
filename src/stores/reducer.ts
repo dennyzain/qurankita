@@ -4,11 +4,13 @@ import type { RootState } from '@/stores/store';
 // Define a type for the slice state
 interface StateTypes {
   isSearch: boolean
+  isCollapseNav:boolean
 }
 
 // Define the initial state using that type
 const initialState: StateTypes = {
   isSearch: false,
+  isCollapseNav: false,
 };
 
 export const globalSlicer = createSlice({
@@ -20,10 +22,13 @@ export const globalSlicer = createSlice({
     searchAction: (state, action: PayloadAction<boolean>) => {
       state.isSearch = action.payload;
     },
+    collapseAction: (state) => {
+      state.isCollapseNav = !state.isCollapseNav;
+    },
   },
 });
 
-export const { searchAction } = globalSlicer.actions;
+export const { searchAction, collapseAction } = globalSlicer.actions;
 
 // Other code such as selectors can use the imported `RootState` type
 export const globalState = (state: RootState) => state;
