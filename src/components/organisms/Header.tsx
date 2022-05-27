@@ -44,7 +44,7 @@ const Header: React.FC = () => {
             <FontAwesomeIcon icon={isSearch ? faXmark : faMagnifyingGlass} />
           </button>
           <button type="button" className="pl-6" onClick={handleTheme}>
-            <FontAwesomeIcon icon={isDark ? faMoon : faSun} />
+            <FontAwesomeIcon icon={isDark ? faSun : faMoon} />
           </button>
           <button type="button" className="pl-6" onClick={handleCollapseNav}>
             <FontAwesomeIcon icon={faBarsStaggered} />
@@ -52,19 +52,25 @@ const Header: React.FC = () => {
           {
             isCollapseNav && (
               <div className="w-1/2 fixed top-0 left-1/2 h-screen z-50 flex flex-col px-3 pt-6 border-2 border-l-blue-400 bg-primary text-secondary dark:bg-dark-primary dark:text-dark-secondary">
-                <button type="button" className="self-end mb-5" onClick={handleCollapseNav}>
-                  <FontAwesomeIcon icon={faXmark} spin />
-                  <p className="font-inter font-semibold text-sm inline-block ml-1">tutup</p>
-                </button>
+                <Link href="/">
+                  <button type="button" className="self-end mb-5" onClick={handleCollapseNav}>
+                    <FontAwesomeIcon icon={faXmark} spin />
+                    <p className="font-inter font-semibold text-sm inline-block ml-1">tutup</p>
+                  </button>
+                </Link>
                 <button type="button">
                   <p className="text-left font-inter font-semibold text-lg">Daftar Surat</p>
                 </button>
-                <button type="button">
-                  <p className="text-left font-inter font-semibold text-lg">Jadwal Adzan</p>
-                </button>
-                <button type="button">
-                  <p className="text-left font-inter font-semibold text-lg">Doa</p>
-                </button>
+                <Link href="/azan">
+                  <button type="button">
+                    <p className="text-left font-inter font-semibold text-lg">Jadwal Adzan</p>
+                  </button>
+                </Link>
+                <Link href="/doa">
+                  <button type="button">
+                    <p className="text-left font-inter font-semibold text-lg">Doa</p>
+                  </button>
+                </Link>
               </div>
             )
           }
