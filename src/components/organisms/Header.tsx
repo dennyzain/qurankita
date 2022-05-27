@@ -32,11 +32,12 @@ const Header: React.FC = () => {
   const handleSearch = () => {
     dispatch(searchAction(!isSearch));
   };
+
   return (
     <header>
       <nav className="animate px-5 py-3 flex items-center justify-between bg-primary text-secondary dark:bg-dark-primary dark:text-dark-secondary">
         <div className="flex">
-          <FontAwesomeIcon icon={faBookOpenReader} className="self-center" />
+          <FontAwesomeIcon icon={faBookOpenReader} className="self-center text-[#387c63e3] dark:text-[#71ecbfd2]" />
           <h1 className="font-black font-inter text-lg pl-2">Qur’an Kita</h1>
         </div>
         <div className="flex">
@@ -51,24 +52,29 @@ const Header: React.FC = () => {
           </button>
           {
             isCollapseNav && (
-              <div className="w-1/2 fixed top-0 left-1/2 h-screen z-50 flex flex-col px-3 pt-6 border-2 border-l-blue-400 bg-primary text-secondary dark:bg-dark-primary dark:text-dark-secondary">
+              <div className="w-1/2 fixed top-0 left-1/2 h-screen z-50 flex flex-col px-3 pt-6 border-l-2 border-l-[#387c63e3] bg-primary text-secondary dark:bg-dark-primary dark:text-dark-secondary dark:border-l-[#71ecbfd2]">
+                <button type="button" className="self-end mb-5" onClick={handleCollapseNav}>
+                  <FontAwesomeIcon icon={faXmark} spin />
+                  <p className="font-inter font-semibold text-sm inline-block ml-1">tutup</p>
+                </button>
                 <Link href="/">
-                  <button type="button" className="self-end mb-5" onClick={handleCollapseNav}>
-                    <FontAwesomeIcon icon={faXmark} spin />
-                    <p className="font-inter font-semibold text-sm inline-block ml-1">tutup</p>
+                  <button type="button">
+                    <p className="text-left font-inter font-semibold text-lg">Daftar Surat</p>
                   </button>
                 </Link>
-                <button type="button">
-                  <p className="text-left font-inter font-semibold text-lg">Daftar Surat</p>
-                </button>
                 <Link href="/azan">
                   <button type="button">
                     <p className="text-left font-inter font-semibold text-lg">Jadwal Adzan</p>
                   </button>
                 </Link>
-                <Link href="/doa">
+                <Link href="/pray">
                   <button type="button">
                     <p className="text-left font-inter font-semibold text-lg">Doa</p>
+                  </button>
+                </Link>
+                <Link href="/about">
+                  <button type="button">
+                    <p className="text-left font-inter font-semibold text-lg">Tentang</p>
                   </button>
                 </Link>
               </div>

@@ -41,7 +41,7 @@ const SearchSurah: React.FC = () => {
         {resultFilter && resultFilter.map((item:DetailSurahProps) => (
           <Link key={item.number} href={`/surah/${item.number}`}>
             <button type="button" className="border border-slate-800 p-2 bg-primary text-secondary dark:bg-dark-primary dark:text-dark-secondary" onClick={handleCloseSuggest}>
-              <p className="text-left">
+              <p className="text-left px-3">
                 {item.name.transliteration.id}
               </p>
             </button>
