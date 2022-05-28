@@ -21,17 +21,9 @@ const Header: React.FC = () => {
 
   const dispatch = useAppDispatch();
 
-  const handleTheme = () => {
-    dispatch(themeAction());
-  };
-
-  const handleCollapseNav = () => {
-    dispatch(collapseAction());
-  };
-
-  const handleSearch = () => {
-    dispatch(searchAction(!isSearch));
-  };
+  const handleTheme = () => dispatch(themeAction());
+  const handleCollapseNav = () => dispatch(collapseAction());
+  const handleSearch = () => dispatch(searchAction(!isSearch));
 
   return (
     <header>
@@ -41,18 +33,39 @@ const Header: React.FC = () => {
           <h1 className="font-black font-inter text-lg pl-2">Qur’an Kita</h1>
         </div>
         <div className="flex">
-          <button type="button" onClick={handleSearch}>
+          <button type="button" className="hover-item" onClick={handleSearch}>
             <FontAwesomeIcon icon={isSearch ? faXmark : faMagnifyingGlass} />
           </button>
-          <button type="button" className="pl-6" onClick={handleTheme}>
+          <button type="button" className="ml-6 hover-item" onClick={handleTheme}>
             <FontAwesomeIcon icon={isDark ? faSun : faMoon} />
           </button>
-          <button type="button" className="pl-6" onClick={handleCollapseNav}>
+          <button type="button" className="ml-6 lg:hidden" onClick={handleCollapseNav}>
             <FontAwesomeIcon icon={faBarsStaggered} />
           </button>
+          <Link href="/">
+            <button type="button" className="ml-6 hidden hover-item lg:inline-block">
+              <p className="font-inter font-black">
+                Daftar Surat
+              </p>
+            </button>
+          </Link>
+          <Link href="/azan">
+            <button type="button" className="ml-6 hidden hover-item lg:inline-block">
+              <p className="font-inter font-black">
+                Jadwal Adzan
+              </p>
+            </button>
+          </Link>
+          <Link href="/pray">
+            <button type="button" className="mx-6 hidden hover-item lg:inline-block">
+              <p className="font-inter font-black">
+                Doa
+              </p>
+            </button>
+          </Link>
           {
             isCollapseNav && (
-              <div className="w-1/2 fixed top-0 left-1/2 h-screen z-50 flex flex-col px-3 pt-6 border-l-2 border-l-[#387c63e3] bg-primary text-secondary dark:bg-dark-primary dark:text-dark-secondary dark:border-l-[#71ecbfd2]">
+              <div className="w-1/2 fixed top-0 left-1/2 h-screen z-50 flex flex-col px-3 pt-6 border-l-2 border-l-[#387c63e3] bg-primary text-secondary dark:bg-dark-primary dark:text-dark-secondary dark:border-l-[#71ecbfd2] lg:hidden">
                 <button type="button" className="self-end mb-5" onClick={handleCollapseNav}>
                   <FontAwesomeIcon icon={faXmark} spin />
                   <p className="font-inter font-semibold text-sm inline-block ml-1">tutup</p>

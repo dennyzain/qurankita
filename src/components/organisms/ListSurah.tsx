@@ -9,7 +9,7 @@ const ListSurah: React.FC<{data:Array<DetailSurahProps>}> = ({ data }) => (
       <ul>
         {data.map((surah) => (
           <Link key={surah.number} href={`surah/${surah.number}`}>
-            <li className="p-1 my-2 border border-black bg-[#71ecbfd2] text-black font-inter font-medium cursor-pointer dark:bg-[#387c63e3] dark:text-white">
+            <li className="p-1 my-2 border border-black bg-[#71ecbfd2] text-black font-inter font-medium cursor-pointer dark:bg-[#387c63e3] dark:text-white hover:scale-105 hover:bg-[#62bd9cd2] hover:dark:bg-[#469e7ee3] transition-all duration-200">
               {`${surah.number}.`}
               {' '}
               {surah.name.transliteration.id}
