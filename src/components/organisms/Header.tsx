@@ -35,7 +35,7 @@ const Header: React.FC = () => {
 
   return (
     <header>
-      <nav className="animate px-5 py-3 flex items-center justify-between bg-primary text-secondary dark:bg-dark-primary dark:text-dark-secondary">
+      <nav className="px-5 py-3 flex items-center justify-between">
         <div className="flex">
           <FontAwesomeIcon icon={faBookOpenReader} className="self-center text-[#387c63e3] dark:text-[#71ecbfd2]" />
           <h1 className="font-black font-inter text-lg pl-2">Qur’an Kita</h1>

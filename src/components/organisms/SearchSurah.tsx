@@ -30,7 +30,7 @@ const SearchSurah: React.FC = () => {
   };
 
   return (
-    <div className="relative flex flex-col px-5 pt-5 bg-primary text-secondary dark:bg-dark-primary dark:text-dark-secondary">
+    <div className="relative flex flex-col px-5 pt-5 ">
       <input
         type="text"
         placeholder="Nama Surat"
@@ -40,7 +40,7 @@ const SearchSurah: React.FC = () => {
       <div className="absolute top-full z-50 flex flex-col left-0 right-0 ">
         {resultFilter && resultFilter.map((item:DetailSurahProps) => (
           <Link key={item.number} href={`/surah/${item.number}`}>
-            <button type="button" className="border border-slate-800 p-2 bg-primary text-secondary dark:bg-dark-primary dark:text-dark-secondary" onClick={handleCloseSuggest}>
+            <button type="button" className="border border-slate-800 p-2" onClick={handleCloseSuggest}>
               <p className="text-left px-3">
                 {item.name.transliteration.id}
               </p>

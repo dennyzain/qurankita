@@ -3,6 +3,6 @@
 @tailwind components;
 @tailwind utilities;
 
-.animate{
-  @apply transition-colors duration-500
+.layout{
+  @apply md:px-8 xl:px-52 transition-all duration-500 bg-primary text-secondary dark:bg-dark-primary dark:text-dark-secondary
 }

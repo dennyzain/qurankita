@@ -4,7 +4,7 @@ import { DetailSurahProps } from '@components/organisms/DetailSurah';
 
 const ListSurah: React.FC<{data:Array<DetailSurahProps>}> = ({ data }) => (
   <section>
-    <div className="p-5 animate bg-primary text-secondary dark:bg-dark-primary dark:text-dark-secondary">
+    <div className="p-5">
       <h3 className="font-bold font-inter text-lg">Daftar Surat Qur’an</h3>
       <ul>
         {data.map((surah) => (

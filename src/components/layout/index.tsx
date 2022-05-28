@@ -11,12 +11,12 @@ interface LayoutProps {
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   const isSearch = useAppSelector((state) => state.global.isSearch);
   return (
-    <>
+    <div className="layout">
       <Header />
       { isSearch && <SearchSurah />}
       {children}
       <Footer />
-    </>
+    </div>
   );
 };
 

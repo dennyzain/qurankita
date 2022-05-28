@@ -7,7 +7,7 @@ const Adzan:React.FC = () => {
   const text = 'Belum ada waktu luang (soon)';
   return (
     <Layout>
-      <div className="h-screen animate flex items-center justify-center text-center bg-primary text-secondary dark:bg-dark-primary dark:text-dark-secondary">
+      <div className="h-screen flex items-center justify-center text-center">
         <p className="font-inter font-black text-xl">
           {text}
           <FontAwesomeIcon icon={faSmileWink} bounce />
