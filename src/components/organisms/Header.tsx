@@ -13,6 +13,40 @@ import { useAppDispatch, useAppSelector } from '@/stores/hooks';
 import { collapseAction, searchAction, themeAction } from '@/stores/reducer';
 import useDarkMode from '@/hooks/useDarkMode';
 
+const CollapseNav: React.FC = () => {
+  const dispatch = useAppDispatch();
+  const handleCollapseNav = () => dispatch(collapseAction());
+
+  return (
+    <div className="animate w-1/2 fixed top-0 left-1/2 h-screen z-50 flex flex-col px-3 pt-6 border-l-2 border-l-[#387c63e3] bg-primary text-secondary dark:bg-dark-primary dark:text-dark-secondary dark:border-l-[#71ecbfd2] lg:hidden">
+      <button type="button" className="self-end mb-5" onClick={handleCollapseNav}>
+        <FontAwesomeIcon icon={faXmark} spin />
+        <p className="font-inter font-semibold text-sm inline-block ml-1">tutup</p>
+      </button>
+      <Link href="/">
+        <button type="button">
+          <p className="text-left font-inter font-semibold text-lg">Daftar Surat</p>
+        </button>
+      </Link>
+      <Link href="/azan">
+        <button type="button">
+          <p className="text-left font-inter font-semibold text-lg">Jadwal Adzan</p>
+        </button>
+      </Link>
+      <Link href="/pray">
+        <button type="button">
+          <p className="text-left font-inter font-semibold text-lg">Doa</p>
+        </button>
+      </Link>
+      <Link href="/about">
+        <button type="button">
+          <p className="text-left font-inter font-semibold text-lg">Tentang</p>
+        </button>
+      </Link>
+    </div>
+  );
+};
+
 const Header: React.FC = () => {
   useDarkMode();
   const isSearch = useAppSelector((state) => state.global.isSearch);
@@ -63,36 +97,7 @@ const Header: React.FC = () => {
               </p>
             </button>
           </Link>
-          {
-            isCollapseNav && (
-              <div className="w-1/2 fixed top-0 left-1/2 h-screen z-50 flex flex-col px-3 pt-6 border-l-2 border-l-[#387c63e3] bg-primary text-secondary dark:bg-dark-primary dark:text-dark-secondary dark:border-l-[#71ecbfd2] lg:hidden">
-                <button type="button" className="self-end mb-5" onClick={handleCollapseNav}>
-                  <FontAwesomeIcon icon={faXmark} spin />
-                  <p className="font-inter font-semibold text-sm inline-block ml-1">tutup</p>
-                </button>
-                <Link href="/">
-                  <button type="button">
-                    <p className="text-left font-inter font-semibold text-lg">Daftar Surat</p>
-                  </button>
-                </Link>
-                <Link href="/azan">
-                  <button type="button">
-                    <p className="text-left font-inter font-semibold text-lg">Jadwal Adzan</p>
-                  </button>
-                </Link>
-                <Link href="/pray">
-                  <button type="button">
-                    <p className="text-left font-inter font-semibold text-lg">Doa</p>
-                  </button>
-                </Link>
-                <Link href="/about">
-                  <button type="button">
-                    <p className="text-left font-inter font-semibold text-lg">Tentang</p>
-                  </button>
-                </Link>
-              </div>
-            )
-          }
+          {isCollapseNav && <CollapseNav />}
         </div>
       </nav>
     </header>

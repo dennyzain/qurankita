@@ -30,7 +30,7 @@ const SearchSurah: React.FC = () => {
   };
 
   return (
-    <div className="relative flex flex-col pt-5 mx-5 lg:mx-32">
+    <div className="animate relative flex flex-col pt-5 mx-5 lg:mx-32">
       <input
         type="text"
         placeholder="Nama Surat"

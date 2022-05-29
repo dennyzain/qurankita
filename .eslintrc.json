@@ -20,6 +20,8 @@
     "react/react-in-jsx-scope": "off",
     "import/extensions":"off",
     "react/prop-types":"off",
-    "consistent-return":"off"
+    "consistent-return":"off",
+    "array-callback-return":"off",
+    "no-param-reassign":"off"
   }
 }
