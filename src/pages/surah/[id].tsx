@@ -15,7 +15,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const data = await res.json();
   return {
     paths: data.data.map((item: DetailSurahProps) => ({ params: { id: `${item.number}` } })),
-    fallback: true,
+    fallback: 'blocking',
   };
 };
 
