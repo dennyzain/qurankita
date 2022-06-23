@@ -23,6 +23,7 @@
     "consistent-return":"off",
     "array-callback-return":"off",
     "no-param-reassign":"off",
-    "react/jsx-props-no-spreading":"off"
+    "react/jsx-props-no-spreading":"off",
+    "linebreak-style":"off"
   }
 }

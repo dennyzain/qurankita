@@ -10,11 +10,11 @@ export interface DetailSurahProps {
     transliteration: {
       id: string;
       en: string;
-    };
+    }|undefined;
     translation: {
       id: string;
       en: string;
-    };
+    }| undefined;
   };
   revelation: { arab: string; en: string; id: string };
   tafsir: { id: string };
@@ -61,7 +61,7 @@ export interface DetailSurahProps {
 
 const DetailSurah: React.FC<{ data: DetailSurahProps }> = ({ data }) => (
   <div className="p-5">
-    <AboutSurah title={data.name.transliteration.id} tafsir={data.tafsir.id} />
+    <AboutSurah title={data.name.transliteration ? data.name.transliteration.id : 'sedang error'} tafsir={data.tafsir.id} />
     {data.verses.map((item) => (
       <AyahSurah
         key={item.number.inSurah}
