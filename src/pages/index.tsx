@@ -1,9 +1,14 @@
 import { GetStaticProps, NextPage } from 'next';
+import axios from 'axios';
 import Layout from '@components/layout';
 import ListSurah from '@components/organisms/ListSurah';
-import { DetailSurahProps } from '@components/organisms/DetailSurah';
+import { ListDataSurahTypes } from '@/types/index.types';
 
-const Home: NextPage<{ data:Array<DetailSurahProps> }> = ({ data }) => (
+interface ListSurahProps{
+  data:Array<ListDataSurahTypes>
+}
+
+const Home: NextPage<ListSurahProps> = ({ data }) => (
   <Layout>
     <ListSurah data={data} />
   </Layout>
@@ -12,9 +17,8 @@ const Home: NextPage<{ data:Array<DetailSurahProps> }> = ({ data }) => (
 export default Home;
 
 export const getStaticProps: GetStaticProps = async () => {
-  const res = await fetch('https://api.quran.sutanlab.id/surah');
-  const data = await res.json();
+  const { data } = await axios.get('https://equran.id/api/surat');
   return {
-    props: { data: data.data },
+    props: { data },
   };
 };
