@@ -10,8 +10,9 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Link from 'next/link';
 import { useAppDispatch, useAppSelector } from '@/stores/hooks';
-import { collapseAction, searchAction, themeAction } from '@/stores/reducer';
+import { collapseAction, themeAction } from '@/stores/reducer';
 import useDarkMode from '@/hooks/useDarkMode';
+import useGlobalStore from '@/stores/storeZustand';
 
 const CollapseNav: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -49,7 +50,8 @@ const CollapseNav: React.FC = () => {
 
 const Header: React.FC = () => {
   useDarkMode();
-  const isSearch = useAppSelector((state) => state.global.isSearch);
+  const store = useGlobalStore((state) => state);
+  const { isSearch, setIsSearch } = store;
   const isCollapseNav = useAppSelector((state) => state.global.isCollapseNav);
   const isDark = useAppSelector((state) => state.global.isDark);
 
@@ -57,13 +59,16 @@ const Header: React.FC = () => {
 
   const handleTheme = () => dispatch(themeAction());
   const handleCollapseNav = () => dispatch(collapseAction());
-  const handleSearch = () => dispatch(searchAction(!isSearch));
+  const handleSearch = () => setIsSearch(!isSearch);
 
   return (
     <header>
       <nav className="px-5 py-3 flex items-center justify-between">
         <div className="flex">
-          <FontAwesomeIcon icon={faBookOpenReader} className="self-center text-[#71ecbfd2] dark:text-[#387c63e3]" />
+          <FontAwesomeIcon
+            icon={faBookOpenReader}
+            className="self-center text-[#71ecbfd2] dark:text-[#387c63e3]"
+          />
           <h1 className="font-black font-inter text-lg pl-2">Qur’an Kita</h1>
         </div>
         <div className="flex">
@@ -78,23 +83,17 @@ const Header: React.FC = () => {
           </button>
           <Link href="/">
             <button type="button" className="ml-6 hidden hover-item lg:inline-block">
-              <p className="font-inter font-black">
-                Daftar Surat
-              </p>
+              <p className="font-inter font-black">Daftar Surat</p>
             </button>
           </Link>
           <Link href="/azan">
             <button type="button" className="ml-6 hidden hover-item lg:inline-block">
-              <p className="font-inter font-black">
-                Jadwal Adzan
-              </p>
+              <p className="font-inter font-black">Jadwal Adzan</p>
             </button>
           </Link>
           <Link href="/pray">
             <button type="button" className="mx-6 hidden hover-item lg:inline-block">
-              <p className="font-inter font-black">
-                Doa
-              </p>
+              <p className="font-inter font-black">Doa</p>
             </button>
           </Link>
           {isCollapseNav && <CollapseNav />}
