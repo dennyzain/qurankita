@@ -9,14 +9,15 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Link from 'next/link';
-import { useAppDispatch, useAppSelector } from '@/stores/hooks';
-import { collapseAction, themeAction } from '@/stores/reducer';
 import useDarkMode from '@/hooks/useDarkMode';
 import useGlobalStore from '@/stores/storeZustand';
 
 const CollapseNav: React.FC = () => {
-  const dispatch = useAppDispatch();
-  const handleCollapseNav = () => dispatch(collapseAction());
+  const {
+    isCollapse, setIsCollapse,
+  } = useGlobalStore((state) => state);
+
+  const handleCollapseNav = () => setIsCollapse(!isCollapse);
 
   return (
     <div className="animate w-1/2 fixed top-0 left-1/2 h-screen z-50 flex flex-col px-3 pt-6 border-l-2 border-l-[#387c63e3] bg-primary text-secondary dark:bg-dark-primary dark:text-dark-secondary dark:border-l-[#71ecbfd2] lg:hidden">
@@ -50,15 +51,12 @@ const CollapseNav: React.FC = () => {
 
 const Header: React.FC = () => {
   useDarkMode();
-  const store = useGlobalStore((state) => state);
-  const { isSearch, setIsSearch } = store;
-  const isCollapseNav = useAppSelector((state) => state.global.isCollapseNav);
-  const isDark = useAppSelector((state) => state.global.isDark);
+  const {
+    isSearch, setIsSearch, isCollapse, setIsCollapse, isDark, setIsDark,
+  } = useGlobalStore((state) => state);
 
-  const dispatch = useAppDispatch();
-
-  const handleTheme = () => dispatch(themeAction());
-  const handleCollapseNav = () => dispatch(collapseAction());
+  const handleTheme = () => setIsDark(!isDark);
+  const handleCollapseNav = () => setIsCollapse(!isCollapse);
   const handleSearch = () => setIsSearch(!isSearch);
 
   return (
@@ -96,7 +94,7 @@ const Header: React.FC = () => {
               <p className="font-inter font-black">Doa</p>
             </button>
           </Link>
-          {isCollapseNav && <CollapseNav />}
+          {isCollapse && <CollapseNav />}
         </div>
       </nav>
     </header>
