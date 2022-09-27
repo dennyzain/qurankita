@@ -1,20 +1,25 @@
 import Link from 'next/link';
 import React, { useCallback, useState } from 'react';
-import { DetailSurahProps } from '@components/organisms/DetailSurah';
-import { useAppDispatch } from '@/stores/hooks';
-import { searchAction } from '@/stores/reducer';
+import axios from 'axios';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSmileWink } from '@fortawesome/free-solid-svg-icons';
+import { DetailDataSurahTypes } from '@/types/index.types';
+import useGlobalStore from '@/stores/storeZustand';
 
 const SearchSurah: React.FC = () => {
-  const dispatch = useAppDispatch();
   const [input, setInput] = useState('');
-  const [resultFilter, setResultFilter] = useState([]);
+  const [resultFilter, setResultFilter] = useState<undefined|DetailDataSurahTypes[]>();
+  const store = useGlobalStore((state) => state);
+  const { isSearch, setIsSearch } = store;
 
   const searchFetching = useCallback(async () => {
-    const res = await fetch('https://api.quran.sutanlab.id/surah');
-    const resParse = await res.json();
-    const { data } = resParse;
-    const filter = data.filter((surah: DetailSurahProps) => {
-      const surahName = surah.name.transliteration.id.toLowerCase().replace('-', '');
+    const { data = null } = await axios.get('https://equran.id/api/surat');
+    if (data === null) {
+      setResultFilter(undefined);
+      return;
+    }
+    const filter = data.filter((surah: DetailDataSurahTypes) => {
+      const surahName = surah.nama_latin.toLowerCase().replace('-', '');
       if (surahName.includes(input.toLowerCase())) return surahName;
     });
     setResultFilter(filter);
@@ -25,9 +30,7 @@ const SearchSurah: React.FC = () => {
     searchFetching();
   };
 
-  const handleCloseSuggest = () => {
-    dispatch(searchAction(false));
-  };
+  const handleCloseSuggest = () => setIsSearch(!isSearch);
 
   return (
     <div className="animate relative flex flex-col pt-5 mx-5 lg:mx-32">
@@ -38,15 +41,25 @@ const SearchSurah: React.FC = () => {
         onChange={handleInput}
       />
       <div className="absolute top-full z-50 flex flex-col left-0 right-0 ">
-        {resultFilter && resultFilter.map((item:DetailSurahProps) => (
-          <Link key={item.number} href={`/surah/${item.number}`}>
-            <button type="button" className="border font-inter font-medium border-slate-800 p-2 bg-primary text-secondary dark:bg-dark-primary dark:text-dark-secondary dark:border-dark-secondary" onClick={handleCloseSuggest}>
-              <p className="text-left px-0 lg:px-3">
-                {item.name.transliteration.id}
+        {resultFilter
+          ? resultFilter.map((item: DetailDataSurahTypes) => (
+            <Link key={item.nomor} href={`/surah/${item.nomor}`}>
+              <button
+                type="button"
+                className="border font-inter font-medium border-slate-800 p-2 bg-primary text-secondary dark:bg-dark-primary dark:text-dark-secondary dark:border-dark-secondary"
+                onClick={handleCloseSuggest}
+              >
+                <p className="text-left px-0 lg:px-3">{item.nama_latin}</p>
+              </button>
+            </Link>
+          )) : (
+            <div className="h-screen flex items-center justify-center text-center">
+              <p className="font-inter font-black text-xl">
+                Data sedang error
+                <FontAwesomeIcon icon={faSmileWink} bounce />
               </p>
-            </button>
-          </Link>
-        ))}
+            </div>
+          )}
       </div>
     </div>
   );
