@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
-import { useAppSelector } from '@/stores/hooks';
+import useGlobalStore from '@/stores/storeZustand';
 
 const useDarkMode = () => {
-  const isDark = useAppSelector((state) => state.global.isDark);
+  const { isDark } = useGlobalStore((state) => state);
 
   useEffect(() => {
     if (isDark) {
@@ -22,7 +22,6 @@ const useDarkMode = () => {
     // checking theme key in local storage
     if (!localStorage.theme) {
       localStorage.setItem('theme', 'light');
-      console.log('masuk sini');
     }
   }, []);
 };
