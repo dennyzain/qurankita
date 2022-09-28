@@ -21,7 +21,7 @@ const AyahSurah: React.FC<AyahSurahProps> = ({
       <h3 className="font-bold font-scheherazade text-3xl text-right mb-6 mt-4 leading-[65px]">
         {arabText}
       </h3>
-      <p className="font-inter font-medium p-1 bg-[#71ecbfd2] text-black dark:bg-[#387c63e3] dark:text-white">{translation}</p>
+      <p className="font-inter font-semibold p-2 bg-third text-secondary rounded-xl dark:text-fourth">{translation}</p>
     </div>
   </section>
 );

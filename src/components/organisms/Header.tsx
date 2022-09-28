@@ -29,7 +29,7 @@ const Header: React.FC = () => {
         <div className="flex">
           <FontAwesomeIcon
             icon={faBookOpenReader}
-            className="self-center text-[#71ecbfd2] dark:text-[#387c63e3]"
+            className="self-center transition-all duration-500 text-third bg-fourth p-1 rounded-full dark:text-secondary dark:bg-third border border-secondary"
           />
           <h1 className="font-black font-inter text-lg pl-2">Qur’an Kita</h1>
         </div>

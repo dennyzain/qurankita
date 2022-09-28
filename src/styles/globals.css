@@ -4,7 +4,7 @@
 @tailwind utilities;
 
 .layout{
-  @apply md:px-8 lg:px-10 xl:px-64 transition-all duration-500 bg-primary text-secondary dark:bg-dark-primary dark:text-dark-secondary
+  @apply md:px-8 lg:px-10 xl:px-64 transition-all duration-500 bg-primary text-secondary dark:bg-fourth dark:text-dark-secondary
 }
 
 .hover-item{
